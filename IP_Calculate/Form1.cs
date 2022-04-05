@@ -1,4 +1,4 @@
-namespace IP_Calculate
+ï»¿namespace IP_Calculate
 {
     public partial class Form1 : Form
     {
@@ -7,7 +7,7 @@ namespace IP_Calculate
         string Network = "";
         string Broadcast = "";
         string Hosts = "";
-        string ipClass;
+        string ipClass = "";
 
         int partIP1;
         int partIP2;
@@ -42,7 +42,7 @@ namespace IP_Calculate
                     if (Convert.ToString(ipClassCheck(partIP1)) == "A") { ipClass = "A"; }
                     else if (Convert.ToString(ipClassCheck(partIP1)) == "B") { ipClass = "B"; }
                     else { ipClass = "C"; }
-                    EnteredIP_adress = $"{partIP1}.{partIP2}.{partIP3}.{partIP4} | Êëàññ {ipClass}";
+                    EnteredIP_adress = $"{partIP1}.{partIP2}.{partIP3}.{partIP4} | Class {ipClass}";
                     afterEnterIP();
                     if(Entered_mask == "0") { EnteredIP_adress = ""; Entered_mask = ""; }
                 }
@@ -57,7 +57,7 @@ namespace IP_Calculate
         private void afterEnterIP()
         {
             mask = int.Parse(maskedTextBox5.Text);
-            if(mask > 32 || mask < 0) { MessageBox.Show("Ââåäèòå ìàñêó â äèàïàçîíå 0-32!", "Îøèáêà!"); Entered_mask = "0"; }
+            if(mask > 32 || mask < 0) { MessageBox.Show("Enter mask in range 0-32!", "Error!"); Entered_mask = "0"; }
             else
             {
                 var maskEnter = new Masks();
@@ -69,7 +69,7 @@ namespace IP_Calculate
 
         private bool nullCheck(string num)
         {
-            if(num == "") { MessageBox.Show("Ââåäèòå äàííûå â ïîëÿ!", "Îøèáêà!"); return false; }
+            if(num == "") { MessageBox.Show("You must fill the empty fields!", "Error!"); return false; }
             else return true;
         }
 
@@ -140,23 +140,12 @@ namespace IP_Calculate
             }
         }
 
-        private void âûéòèÈçÏğîãğàììûToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void àâòîğToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Ïğèëîæåíèå ñîçäàíî ñòóäåíòîì ãğóïïû İÈÑÁ-24, Øèøêèíûì Ñ.Í.", "Î ïğîãğàììå");
-        }
-
-        private void ñëó÷àéíàÿÌàñêàToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var rnd = new Random();
-            maskedTextBox5.Text = Convert.ToString(rnd.Next(0, 32));
-        }
-
-        private void iPêëàññAToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IPclassAToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var rnd = new Random();
             maskedTextBox1.Text = Convert.ToString(rnd.Next(1, 127));
@@ -165,7 +154,7 @@ namespace IP_Calculate
             maskedTextBox4.Text = Convert.ToString(rnd.Next(0, 255));
         }
 
-        private void iPêëàññBToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IPclassBToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var rnd = new Random();
             maskedTextBox1.Text = Convert.ToString(rnd.Next(128, 191));
@@ -174,13 +163,24 @@ namespace IP_Calculate
             maskedTextBox4.Text = Convert.ToString(rnd.Next(0, 255));
         }
 
-        private void iPêëàññCToolStripMenuItem_Click(object sender, EventArgs e)
+        private void IPclassCToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var rnd = new Random();
             maskedTextBox1.Text = Convert.ToString(rnd.Next(192, 223));
             maskedTextBox2.Text = Convert.ToString(rnd.Next(0, 255));
             maskedTextBox3.Text = Convert.ToString(rnd.Next(0, 255));
             maskedTextBox4.Text = Convert.ToString(rnd.Next(0, 255));
+        }
+
+        private void RandomMaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var rnd = new Random();
+            maskedTextBox5.Text = Convert.ToString(rnd.Next(0, 32));
+        }
+
+        private void AuthorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Application created by Shishkin S.N.", "About");
         }
     }
 }

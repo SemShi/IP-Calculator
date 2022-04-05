@@ -40,21 +40,21 @@
                     hosts = int.MaxValue - 1;
                     nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                     bc = $"{partIP1 + step}.{partIP2 = 255}.{partIP3 = 255}.{partIP4 = 255}";
-                    hsts = $"{hosts} | всего: 2147483648";
+                    hsts = $"{hosts} | total: 2147483648";
                     if (hsts == "-2" || hsts == "-1") { hsts = "0"; }
                 }
                 else if(mask == 0)
                 {
                     nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                     bc = $"{partIP1 = 255}.{partIP2 = 255}.{partIP3 = 255}.{partIP4 = 255}";
-                    hsts = $"4294967294 | всего: 4294967296";
+                    hsts = $"4294967294 | total: 4294967296";
                 }
                 else
                 {
                     hosts = Convert.ToInt32(Math.Pow(2, zerosInIP)); if (hosts < 0) { hosts = 0; }
                     nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                     bc = $"{partIP1 + step}.{partIP2 = 255}.{partIP3 = 255}.{partIP4 = 255}";
-                    hsts = $"{hosts - 2} | всего: {hosts}";
+                    hsts = $"{hosts - 2} | total: {hosts}";
                 }
             }
             else if (mask < 17)
@@ -79,7 +79,7 @@
                 hosts = Convert.ToInt32(Math.Pow(2, zerosInIP)); if (hosts < 0) { hosts = 0; }
                 nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                 bc = $"{partIP1}.{partIP2 + step}.{partIP3 = 255}.{partIP4 = 255}";
-                hsts = $"{hosts - 2} | всего: {hosts}";
+                hsts = $"{hosts - 2} | total: {hosts}";
             }
             else if (mask < 25)
             {
@@ -102,7 +102,7 @@
                 hosts = Convert.ToInt32(Math.Pow(2, zerosInIP)); if (hosts < 0) { hosts = 0; }
                 nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                 bc = $"{partIP1}.{partIP2}.{partIP3 + step}.{partIP4 = 255}";
-                hsts = $"{hosts - 2} | всего: {hosts}";
+                hsts = $"{hosts - 2} | total: {hosts}";
             }
             else
             {
@@ -117,7 +117,7 @@
 
                 nw = $"{partIP1}.{partIP2}.{partIP3}.{partIP4}";
                 bc = $"{partIP1}.{partIP2}.{partIP3}.{partIP4 + step}";
-                hsts = $"{hosts - 2}  | всего: {hosts}";
+                hsts = $"{hosts - 2}  | total: {hosts}";
                 if (hosts <= 1) { hsts = "0"; }
             }
         }

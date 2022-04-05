@@ -17,7 +17,9 @@
         {
             void Msg(int oktet)
             {
-                MessageBox.Show($"{oktet}-й октет имеет неверное значение!", "Ошибка!");
+                if(oktet == 1) { MessageBox.Show($"{oktet}-st oktet has the wrong value!", "Error!"); }
+                else if (oktet == 2) { MessageBox.Show($"{oktet}-nd oktet has the wrong value!", "Error!"); }
+                else { MessageBox.Show($"{oktet}-th oktet has the wrong value!", "Error!"); }
             }
             int oktet = 0;
             string num1 = firstPartIP.ToString();
